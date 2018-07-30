@@ -1,0 +1,60 @@
+network-properties:
+  network:
+    name: {{deployment_network}}
+  other_availability_zones:
+  - name: {{az1}}
+  - name: {{az1}}
+  - name: {{az1}}
+  service_network:
+    name: {{service_network}}
+  singleton_availability_zone:
+    name: {{az1}}
+product-properties:
+  .healthwatch-forwarder.boshhealth_instance_count:
+    value: 1
+  .healthwatch-forwarder.boshtasks_instance_count:
+    value: 2
+  .healthwatch-forwarder.canary_instance_count:
+    value: 2
+  .healthwatch-forwarder.cli_instance_count:
+    value: 2
+  .healthwatch-forwarder.health_check_az:
+    value: {{az1}}
+  .healthwatch-forwarder.ingestor_instance_count:
+    value: 4
+  .healthwatch-forwarder.opsman_instance_count:
+    value: 2
+  .healthwatch-forwarder.publish_to_eva:
+    value: true
+  .healthwatch-forwarder.worker_instance_count:
+    value: 4
+  .mysql.skip_name_resolve:
+    value: true
+  .properties.boshtasks:
+    value: disable
+  .properties.opsman:
+    value: enable
+  .properties.opsman.enable.url:
+    value: {{opsmgr_url}}
+  .properties.syslog_selector:
+    value: inactive
+product_name: p-healthwatch
+resource-config:
+  healthwatch-forwarder:
+    instance_type:
+      id: automatic
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+  mysql:
+    instance_type:
+      id: automatic
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+  redis:
+    instance_type:
+      id: automatic
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
