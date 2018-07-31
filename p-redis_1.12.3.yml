@@ -1,0 +1,52 @@
+network-properties:
+  network:
+    name: {{deployment_network}}
+  other_availability_zones:
+  - name: {{az1}}
+  - name: {{az2}}
+  - name: {{az3}}
+  service_network:
+    name: {{service_network}}
+  singleton_availability_zone:
+    name: {{az1}}
+product-properties:
+  .cf-redis-broker.redis_maxmemory:
+    value: 512MB
+  .cf-redis-broker.service_instance_limit:
+    value: 5
+  .properties.backups_selector:
+    value: No Backups
+  .properties.large_plan_selector:
+    value: Plan Inactive
+  .properties.medium_plan_selector:
+    value: Plan Inactive
+  .properties.metrics_polling_interval:
+    value: 30
+  .properties.small_plan_selector:
+    value: Plan Active
+  .properties.syslog_selector:
+    value: "No"
+  .redis-on-demand-broker.service_instance_limit:
+    value: 20
+  .redis-on-demand-broker.service_instance_sharing:
+    value: false
+product_name: p-redis
+resource-config:
+  cf-redis-broker:
+    instance_type:
+      id: automatic
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+  dedicated-node:
+    instance_type:
+      id: automatic
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+  redis-on-demand-broker:
+    instance_type:
+      id: automatic
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
